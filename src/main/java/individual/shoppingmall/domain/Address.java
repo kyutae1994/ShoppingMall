@@ -8,9 +8,9 @@ import javax.persistence.Embeddable;
 @Getter
 public class Address {
 
-    private String city;
-    private String street;
-    private String zipcode;
+    private String address_number;   // 우편번호
+    private String address;  // 주소
+    private String detail_address;  // 상세주소
 
     protected Address() {}
 }
