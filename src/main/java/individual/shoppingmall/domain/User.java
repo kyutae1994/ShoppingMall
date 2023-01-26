@@ -15,6 +15,9 @@ public class User {
     @Column(name = "user_id")
     private Long id;
 
+    @OneToMany(mappedBy = "member")
+    private List<Order> orders = new ArrayList<>();
+
     private String password;
 
     @Column(name = "user_name")
@@ -33,7 +36,4 @@ public class User {
 
     @Embedded
     private Address address;
-
-    @OneToMany(mappedBy = "member")
-    private List<Order> orders = new ArrayList<>();
 }
