@@ -26,4 +26,5 @@ public class OrderItem {
 
     private int orderPrice;
     private int orderCount;
+//    private String refundCheck; 환불
 }
