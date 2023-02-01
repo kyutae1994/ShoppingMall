@@ -15,13 +15,15 @@ public class User {
     @Column(name = "user_id")
     private Long id;
 
-    @OneToMany(mappedBy = "member")
+    @OneToMany(mappedBy = "user")
     private List<Order> orders = new ArrayList<>();
 
     private String password;
 
     @Column(name = "user_name")
     private String name;
+
+    private String nickname;
 
     private String phone;
 
@@ -32,7 +34,7 @@ public class User {
     @Enumerated
     private UserGrade userGrade; // 등급
 
-    private LocalDateTime insert_date; // 가입날짜
+    private LocalDateTime insertDate; // 가입날짜
 
     @Embedded
     private Address address;

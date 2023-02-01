@@ -4,26 +4,26 @@ import lombok.Getter;
 
 import javax.persistence.*;
 
+import java.time.LocalDateTime;
+
 import static javax.persistence.FetchType.*;
 
 @Entity
 @Getter
-public class OrderItem {
+public class Reply {
 
     @Id
     @GeneratedValue
-    @Column(name = "order_item_id")
+    @Column(name = "reply_id")
     private Long id;
 
     @ManyToOne(fetch = LAZY)
     @JoinColumn(name = "item_id")
     private Item item;
 
-    @ManyToOne(fetch = LAZY)
-    @JoinColumn(name = "order_id")
-    private Order order;
+    private String content;
+    private String nickname;
+    // 작성 날짜
+    private LocalDateTime writeDate;
 
-    private int orderPrice;
-    private int orderCount;
-//    private String refundCheck; 환불
 }
