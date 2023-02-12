@@ -1,41 +1,48 @@
 package individual.shoppingmall.domain;
 
-import lombok.Getter;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotNull;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
 @Entity
-@Getter
-public class User {
+@Data
+@NoArgsConstructor
+public class Member {
 
-    @Id @GeneratedValue
-    @Column(name = "user_id")
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "member_id")
     private Long id;
 
-    @OneToMany(mappedBy = "user")
+    @OneToMany(mappedBy = "member")
     private List<Order> orders = new ArrayList<>();
 
-    private String password;
-
-    @Column(name = "user_name")
+    @Column(name = "member_name")
     private String name;
 
     private String nickname;
 
     private String phone;
 
+    @Column(unique = true)
     private String email;
+
+    @NotNull
+    private String password;
 
     private String email_check; // 이메일 수신 여부
 
     @Enumerated
-    private UserGrade userGrade; // 등급
+    private MemberGrade memberGrade; // 등급
 
     private LocalDateTime insertDate; // 가입날짜
 
     @Embedded
     private Address address;
+
 }
